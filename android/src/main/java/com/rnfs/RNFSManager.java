@@ -33,6 +33,8 @@ import java.security.MessageDigest;
 import java.util.HashMap;
 import java.util.Map;
 
+import tool.StorageDirUtil;
+
 public class RNFSManager extends ReactContextBaseJavaModule {
 
   private static final String RNFSDocumentDirectoryPath = "RNFSDocumentDirectoryPath";
@@ -750,7 +752,7 @@ public class RNFSManager extends ReactContextBaseJavaModule {
     constants.put(RNFSFileTypeRegular, 0);
     constants.put(RNFSFileTypeDirectory, 1);
 
-    File externalStorageDirectory = Environment.getExternalStorageDirectory();
+    File externalStorageDirectory = StorageDirUtil.getExternalStorageDirectory(reactContext);
     if (externalStorageDirectory != null) {
       constants.put(RNFSExternalStorageDirectoryPath, externalStorageDirectory.getAbsolutePath());
     } else {
